@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class=height100percent>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PGB Example Screen</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="buttons.css" />
+    <style>
+    body {margin:0px;font-size:large;}
+    .hidden {visibility:collapse;display:none;}
+    .expose {visibility:visible;display:block;} /* Here for completeness only. */
+    .height100percent {height:100%} 
+    .copyright {padding:5px;align:left;font-style:italic;font-size:small;}
+    #header {margin:0;padding:0;}
+    #exitApp {margin:1em;float:right;}
+    /* background colors */
+    .r {background-color:hsl(0,25%,75%);}   /* pastel-red */
+    .g {background-color:hsl(135,25%,75%);} /* pastel-gree */
+    .b {background-color:hsl(225,25%,75%);} /* pastel-blue */
+    .a {background-color:hsl(45,25%,75%);}  /* pastel-gold */
+    .p {background-color:hsl(270,25%,75%);} /* pastel-purple */
+    </style>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+</head>
+<body onload="onLoad()" class=height100percent>
+    <div id=header class="button button-block button-large">
+        <img align=left src=favicon-48x48.png>
+        PGB Example Screen
+        <button id=exitApp onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
+    </div>
+
+    <button onclick='onButtonClick()' class="button button-pill button-action button-large">button</button>
+
+    <div id=screenStuff>ScreenStuff Not Loaded.</div>
+
+    <div class="copyright">
+        <span id=copyright>Created by Jesus Monroy, Jr. &copy; 2018</span>
+    </div>
+</body>
+    <script type="text/javascript">
+    //
+    function onButtonClick() {
+        alert("button clicked.");
+    }
+    //
+    // Use the "screen" object available in most webbrowser
+    //
+    function screenStuff() {
+        var screenStuff = "" +
+        "<p class=r /><b>screen.width:</b> "       + screen.width +
+        "<p class=g /><b>screen.height:</b> "      + screen.height +
+        "<p class=b /><b>screen.availWidth:</b> "  + screen.availWidth +
+        "<p class=r /><b>screen.availHeight:</b> " + screen.availHeight +  
+        "<p class=g /><b>screen.colorDepth: "</b>  + screen.colorDepth + 
+        "<p class=b /><b>screen.pixelDepth: "</b>  + screen.pixelDepth;  
+
+        document.getElementById('screenStuff').innerHTML = screenStuff;
+    }
+    //
+    function onLoad() {
+        alert("body loaded.");
+    }
+    //
+    function onDeviceReady() {
+        alert("device ready.");
+        navigatorStuff();
+    }
+    //
+    // Wait for PhoneGap to load
+    document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
+</html>
